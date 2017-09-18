@@ -1,0 +1,46 @@
+<% include palets/header %>
+<body id="showPostDetail">
+    <div class="container container-fluid postcontainer">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="well postwell"><img src="<%= post.author.displayPic %>" class="postprofileimage">
+                    <div>
+                        <p class="postUsername"><%= post.author.displayName %></p><img src="<%= post.image %>" class="postImage"><br>
+                        <p class="aboutPost" style="margin-bottom: 2px;margin-top: 2px"><%= post.createdOn %></p>
+                        <p class="aboutPost"> <%= post.about %> </p>
+                        <%if(currentUser && post.author.id.equals(currentUser._id)){%>
+                        <a href="/post/<%= post._id %>/edit">Edit </a><span> / </span>
+                        <form style="display: inline" action="/post/<%= post._id %>?_method=DELETE" method="post">
+                            <input type="submit" class="text-danger" style="background: rgba(0,0,0,0); border: none" value="Delete">
+                        </form>
+                        <%}%>
+                        <hr>
+                        <div class="commentDiv">
+                            <div class="row">
+                                <% post.comment.forEach(function (comment) { %>
+                                <div class="col-md-12">
+                                    <img src="<%= comment.author.displayPic %>" class="commentDisplayPic pull-left">
+                                    <p class="commentUsername"><%= comment.author.displayName %><span style="font-family: Roboto" class="pull-right"><%= comment.createdOn %></span></p>
+                                    <p class="commentComment"><%= comment.text %></p>
+                                    <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                                    <a href="/post/<%= post._id %>/comment/<%= comment._id %>/edit" class="editComment">Edit </a>
+                                    <span> / </span>
+                                    <form style="display: inline" action="/post/<%= post._id %>/comment/<%= comment._id %>?_method=DELETE" method="post">
+                                        <input type="submit" class="text-danger" style="background: rgba(0,0,0,0); border: none" value="Delete">
+                                    </form>
+                                    <%}%>
+                                </div>
+                                <%})%>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" action="/post/<%= post._id %>/comment" method="post" id="commentForm">
+                        <input class="form-control" type="text" name="commentText">
+                        <button class="btn btn-info" type="submit">Comment </button>
+                    </form>
+                    <a href="/" id="goBack" class="btn btn-primary"> <i class="fa fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<% include palets/footer %>

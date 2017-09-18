@@ -1,0 +1,19 @@
+<% include palets/header %>
+<body id="logbody">
+<div class="container" id="logincintainer"><img src="/img/001-male-user.png">
+    <form action="/signup" method="post">
+        <div class="form-group">
+            <input class="form-control" type="text" name="email" placeholder="username" required>
+            <input class="form-control" type="password" name="password" placeholder="password" required>
+            <button class="btn btn-warning" type="submit">signUp</button>
+        </div>
+    </form>
+    <h3>or connect using ..</h3>
+    <div class="btn-group text-center" role="group">
+        <p><a class="bg-primary sociallink btn btn-default" href="/login"> Local <i class="glyphicon glyphicon-user"></i></a></p>
+        <p><a class="bg-primary sociallink btn btn-primary" href="/auth/facebook">facebook <i class="fa fa-facebook-square"></i></a></p>
+        <p><a class="bg-primary sociallink btn btn-info" href="/auth/twitter">twitter <i class="fa fa-twitter"></i></a></p>
+        <p><a class="bg-primary sociallink btn btn-danger" href="/auth/google">Google+ <i class="fa fa-google"></i></a></p>
+    </div>
+</div>
+<% include palets/footer %>

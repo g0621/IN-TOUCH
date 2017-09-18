@@ -1,0 +1,32 @@
+<% include palets/header %>
+<body id="createPost">
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<div class="container" id="createpostcontainer">
+    <div class="well" id="createpostwell"><img src="<%= currentUser.displayPic %>" id="createpostuserpic"><br>
+        <img style="max-width: 85%; max-height: 400px; margin-bottom: 8px; display: none; border-radius: 7px;" src="#" id="blah" >
+        <div class="form-group" id="createpostform">
+            <form action="/post/new" method="post" enctype="multipart/form-data" id="createpost">
+                <input class="form-control" type="text" required="" placeholder="something about this" autofocus="" name="about">
+                <input type="file" accept="image/jpeg, image/gif, image/png" onchange="readURL(this);" id="filewala" class="btn-sm btn btn-default" name="image">
+                <button class="btn btn-warning" type="submit">create</button>
+            </form>
+        </div>
+        <a href="/" id="thebackbuttom" class="btn btn-info"><i class="fa fa-arrow-left"></i></a></div>
+</div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .show()
+                    .attr('src', e.target.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<% include palets/footer %>

@@ -1,0 +1,33 @@
+<% include palets/header %>
+<body id="showpost">
+<a href="/post/new" id="newPost" class="btn btn-primary"> Share </a>
+<div class="container container-fluid postcontainer">
+    <div class="row">
+        <% post.forEach(function(po){ %>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="well postwell"><img src="<%= po.author.displayPic %>" class="postprofileimage">
+                <div>
+                    <p class="postUsername"><%= po.author.displayName %></p>
+                    <img src="<%= po.image %>" class="postImage">
+                    <p class="aboutPost" style="magin-top : 3px ; margin-bottom: 3px"><%= po.createdOn %></p>
+                    <p class="aboutPost"><%= po.about %> </p>
+                    <hr>
+                    <div class="commentDiv">
+                        <div class="row">
+                            <% po.comment.forEach(function (comment) { %>
+                            <div class="col-md-12">
+                                <img src="<%= comment.author.displayPic %>" class="commentDisplayPic pull-left">
+                                <p class="commentUsername"><%= comment.author.displayName %> <span style="font-family: Roboto" class="pull-right"><%= comment.createdOn %></span></p>
+                                <p class="commentComment"><%= comment.text %></p>
+                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <a href="/post/<%= po._id %>" class="btn btn-primary"> <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+<% include palets/footer %>

@@ -1,0 +1,12 @@
+<% include palets/header %>
+<body id="commentEditBody">
+    <div class="container commentEditConrtainer" id="commentEditConrtainer">
+        <div class="well" id="commentEditWell">
+            <form action="/post/<%= postId %>/comment/<%= comment._id %>?_method=PUT" method="post">
+                <span class="label label-default">Edit the comment</span>
+                <input name="commentText" class="form-control" type="text" value="<%= comment.text %>">
+                <button class="btn btn-success" type="submit">Change</button>
+            </form>
+            <a href="/post/<%= postId %>" class="btn btn-info">Back<i class="fa fa-arrow-left"></i></a></div>
+    </div>
+<% include palets/footer %>

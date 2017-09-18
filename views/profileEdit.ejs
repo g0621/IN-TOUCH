@@ -1,0 +1,29 @@
+<% include palets/header %>
+<body id="profileEdit">
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+ <div class="container" id="profileFormContainer">
+     <img src="<%= user.displayPic %>" id="editproimg">
+
+        <form action="/profile/<%= user._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+            <input class="form-control proeditform" type="text" name="displayName" placeholder="Dispaly name" autofocus="" value="<%= user.displayName %>" required>
+            <input type="file" accept="image/jpeg, image/gif, image/png" name="displayPic" onchange="readURL(this);" class="btn btn-default proeditform">
+            <button class="btn btn-primary proeditform" type="submit"> Change </button>
+        </form>
+    </div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#editproimg')
+                    .attr('src', e.target.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<% include palets/footer %>

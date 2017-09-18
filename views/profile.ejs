@@ -1,0 +1,84 @@
+<% include palets/header %>
+<body style="text-align: center" id="profilebody">
+<div class="container" id="profilecont">
+    <a href="/profile/<%= user._id %>/editprofile">
+        <% if(user.displayPic){ %>
+        <img src="<%= user.displayPic %>">
+        <% }else{ %>
+        <img src="/img/001-male-user.png">
+        <% } %>
+    </a>
+    <h3 style="font-family: Satisfy;color: #f1f1f1"><%= user.displayName %></h3>
+    <h4 style="font-family: Roboto;color: #f1f1f1">click on Avatar to coustomize profile :)</h4>
+    <div class="page-header text-center">
+        <h1 class="profileheading">Profile<span class="fa fa-anchor"></span></h1>
+        <a href="/logout" class="btn btn-default">Logout </a>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="localPalet" class="well">
+                <h3><span class="fa fa-user"> </span> Local</h3>
+                <% if(user.local.email) { %>
+                <p>
+                    <strong>id</strong> : <%= user._id %><br>
+                    <strong>email</strong> : <%= user.local.email %><br>
+                    <strong>password</strong> : <%= user.local.password.substring(0,20) %>...<br>
+                </p>
+                <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% }else { %>
+                <a href="/connect/local" class="btn btn-default">connect </a>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="facebookPalet" class="well">
+                <h3><span class="fa fa-facebook"> </span> facebook</h3>
+                <% if(user.facebook.token){ %>
+                <p>
+                    <strong>id</strong> : <%= user.facebook.id %><br>
+                    <strong>token</strong> : <%= user.facebook.token.substring(0,20) %>...<br>
+                    <strong>email</strong> : <%= user.facebook.email %><br>
+                    <strong>name</strong> : <%= user.facebook.name %><br>
+                </p>
+                <a href="/unlink/facebook" class="btn btn-default">Unlink</a>
+                <% }else{ %>
+                <a href="/connect/facebook" class="btn btn-default">connect facebook</a>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="twitterPalet" class="well">
+                <h3><span class="fa fa-twitter"> </span> twitter</h3>
+                <% if(user.twitter.token){ %>
+                <p>
+                    <strong>id</strong> : <%= user.twitter.id %><br>
+                    <strong>token</strong> : <%= user.twitter.token.substring(0,20) %>...<br>
+                    <strong>displayNameusername</strong> : <%= user.twitter.displayName %><br>
+                    <strong>username</strong> : <%= user.twitter.username %><br>
+                </p>
+                <a href="/unlink/twitter" class="btn btn-default">Unlink</a>
+                <% }else{ %>
+                <a href="/connect/twitter" class="btn btn-default">connect twitter</a>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="googlePalet" class="well">
+                <h3><span class="fa fa-google-plus"> </span> Google</h3>
+                <% if(user.google.token) { %>
+                <p>
+                    <strong>id</strong> : <%= user.google.id %><br>
+                    <strong>token</strong> : <%= user.google.token.substring(0,20) %>...<br>
+                    <strong>email</strong> : <%= user.google.email %><br>
+                    <strong>name</strong> : <%= user.google.name %><br>
+                </p>
+                <a href="/unlink/google" class="btn btn-default">Unlink</a>
+                <% }else{ %>
+                <a href="/connect/google" class="btn btn-default">connect google</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <a href="/" class="btn btn-default"> <span class="fa fa-chevron-left"> </span></a>
+</div>
+<% include palets/footer %>
