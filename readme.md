@@ -129,3 +129,6 @@ MIT
 
 
 **Free Software, Hell Yeah!** (*just mention the repo link*)
+
+### CheckOut my other repos
+  - [Tic-Tac-Toe implementation in Android Java and Python](https://github.com/g0621/TicTacToe)
