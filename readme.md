@@ -1,8 +1,8 @@
 # In-Touch
 **Developed over**
-[![N|Solid](http://javascript-html5-tutorial.com/wp-content/uploads/2015/02/nodejs-logo.png)](https://nodesource.com/products/nsolid)
+[![N|Solid](http://javascript-html5-tutorial.com/wp-content/uploads/2015/02/nodejs-logo.png)](https://nodejs.org/en/)
 
-In-Touch is a open source social network templet with node.js backend.
+In-Touch is a open source social network template with node.js backend.
 
   - Build over open-source/free services.
   - Ready to deploy code just set *Environment-Variables*.
